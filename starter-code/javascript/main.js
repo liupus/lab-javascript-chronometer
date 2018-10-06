@@ -10,14 +10,19 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
+  printMinutes ();
+  printSeconds ();
 
 }
 
 function printMinutes() {
-
+minDec.innerHTML = chronometer.min [0];
+minUni.innerHTML = chronometer.min [1];
 }
 
 function printSeconds() {
+  secDec.innerHTML = chronometer.sec [0];
+  secUni.innerHTML = chronometer.sec [1];
 
 }
 
@@ -51,10 +56,28 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+var currClass = btnRight.style.className;
+if (btnLeft.className === "btn start") {
+  btnLeft.innerHTML = "STOP";
+  btnRight.innerHTML = "SPLIT";
+  btnLeft.className = "btn stop";
+  btnRight.className = "btn split";
+  chronometer.startClick();
+  winTimerID = window.setInterval (printTime,1000);
+  console.log ("Starting Chrono");
+}
+else {
+  btnLeft.innerHTML = "START";
+  btnRight.innerHTML = "RESET";
+  btnLeft.className = "btn start";
+  btnRight.className = "btn reset";
+  chronometer.stopClick();
+  console.log ("Stopping Chrono");
+}
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
+  var currClass
 
 });
